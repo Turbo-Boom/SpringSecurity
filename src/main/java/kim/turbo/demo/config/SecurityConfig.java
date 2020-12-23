@@ -28,10 +28,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        String password = passwordEncoder().encode("123");
-//        auth.inMemoryAuthentication().withUser("turbo").password(password).roles("admin");
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
 }
