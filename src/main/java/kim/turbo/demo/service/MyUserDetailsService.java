@@ -39,7 +39,7 @@ public class MyUserDetailsService implements UserDetailsService {
         if (users == null) {
             throw new UsernameNotFoundException("用户不存在");
         }
-        List<GrantedAuthority> authorities = AuthorityUtils.commaSeparatedStringToAuthorityList("admins,ROLE_sale");
+        List<GrantedAuthority> authorities = AuthorityUtils.commaSeparatedStringToAuthorityList("admins,ROLE_sale1");
         return new User(username, new BCryptPasswordEncoder().encode(users.getPassword()), authorities);
     }
 }
