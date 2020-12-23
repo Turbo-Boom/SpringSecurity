@@ -20,4 +20,8 @@ public class TestController {
         return "hello";
     }
 
+    @GetMapping("index")
+    public String index() {
+        return "hello index";
+    }
 }
