@@ -44,7 +44,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .defaultSuccessUrl("/test/index").permitAll() //登陆成功后跳转路径
                 .and().authorizeRequests()
                 .antMatchers("/", "/test/hello", "/user/login").permitAll() // 不需要认证路径
+                // 当前登陆用户，只有admin权限才能访问这个路径
+                // 针对某一个用户权限设置
+//                .antMatchers("/test/index").hasAuthority("admins") // 针对某一个用户权限设置
+//                .antMatchers("/test/index").hasAnyAuthority("admins,manager")
+//                .antMatchers("/test/index").hasRole("sale") // 一个角色
+                .antMatchers("/test/index").hasAnyRole("sale,role") // 多个角色
                 .anyRequest().authenticated()
                 .and().csrf().disable();// 关闭csrf防护
+
     }
 }
